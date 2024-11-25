@@ -9,7 +9,7 @@ async fn main() -> io::Result<()> {
 
     if !Path::new(run_basedir.as_str()).exists() {
         return Err(Error::new(
-            io::ErrorKind::NotADirectory,
+            io::ErrorKind::NotFound,
             format!("directory {} does not exists", run_basedir),
         ));
     }
