@@ -14,6 +14,14 @@ impl SessionExecutable {
     pub fn new(name: &str) -> Self {
         match name {
             "" => Self {
+                program: String::from("/usr/bin/gamescope"),
+                arguments: vec![String::from("-e"), String::from("steam")],
+            },
+            "alacritty" => Self {
+                program: String::from("/usr/bin/alacritty"),
+                arguments: vec![],
+            },
+            "sh" => Self {
                 program: String::from("/bin/sh"),
                 arguments: vec![],
             },
@@ -28,6 +36,10 @@ impl SessionExecutable {
             "sleep" => Self {
                 program: String::from("sleep"),
                 arguments: vec![String::from("5")],
+            },
+            "gamescope" => Self {
+                program: String::from("/usr/bin/gamescope"),
+                arguments: vec![String::from("-e"), String::from("steam")],
             },
             _ => todo!(),
         }
