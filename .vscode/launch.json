@@ -1,0 +1,101 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'chimera_session'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=chimera-session"
+                ],
+                "filter": {
+                    "name": "chimera_session",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'chimera-session'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=chimera-session",
+                    "--package=chimera-session"
+                ],
+                "filter": {
+                    "name": "chimera-session",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'chimera-session'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=chimera-session",
+                    "--package=chimera-session"
+                ],
+                "filter": {
+                    "name": "chimera-session",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'chimera-session-exec'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=chimera-session-exec",
+                    "--package=chimera-session"
+                ],
+                "filter": {
+                    "name": "chimera-session-exec",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'chimera-session-exec'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=chimera-session-exec",
+                    "--package=chimera-session"
+                ],
+                "filter": {
+                    "name": "chimera-session-exec",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
