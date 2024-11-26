@@ -35,7 +35,7 @@ fn create_log_file(name: &str) -> Option<File> {
         return None
     }
 
-    let logsdir_pathbuf = home_pathbuf.join("chimera_session");
+    let logsdir_pathbuf = home_pathbuf.join("embedded_session");
 
     if !logsdir_pathbuf.clone().exists() {
         if std::fs::create_dir(logsdir_pathbuf.clone()).is_err() {
@@ -107,12 +107,12 @@ impl Session {
                     select! {
                         read_result = guard.read(buf.as_mut_slice()) => {
                             match read_result {
-                                Ok(bytes_read) => match self.stream_interpreter.decode::<ChimeraSessionCommand>(&buf.as_slice()[0..bytes_read]) {
+                                Ok(bytes_read) => match self.stream_interpreter.decode::<EmbeddedSessionCommand>(&buf.as_slice()[0..bytes_read]) {
                                     Ok(commands) => {
                                         for c in commands {
                                             match c {
-                                                ChimeraSessionCommand::Terminate => exit_requested = true,
-                                                ChimeraSessionCommand::Restart(command) => {
+                                                EmbeddedSessionCommand::Terminate => exit_requested = true,
+                                                EmbeddedSessionCommand::Restart(command) => {
                                                     self.command = command;
                                                     proc.kill().await?
                                                 },

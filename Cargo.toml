@@ -1,15 +1,15 @@
 [package]
-name = "chimera-session"
+name = "embedded-session"
 version = "0.1.0"
 edition = "2021"
 
 [[bin]]
-name = "chimera-session"
-path = "src/chimera-session/main.rs"
+name = "embedded-session"
+path = "src/embedded-session/main.rs"
 
 [[bin]]
-name = "chimera-session-exec"
-path = "src/chimera-session-exec/main.rs"
+name = "embedded-session-exec"
+path = "src/embedded-session-exec/main.rs"
 
 [dependencies]
 argh = "0.1.12"

@@ -58,12 +58,12 @@ impl SessionExecutable {
 }
 
 #[derive(PartialEq, Eq, Debug, Clone)]
-pub enum ChimeraSessionCommand {
+pub enum EmbeddedSessionCommand {
     Terminate,
     Restart(SessionExecutable),
 }
 
-impl ByteEncodable for ChimeraSessionCommand {
+impl ByteEncodable for EmbeddedSessionCommand {
     fn get_size<Size>(&self) -> Option<Size>
     where
         Size: BVSize + ByteEncodable,
@@ -94,7 +94,7 @@ impl ByteEncodable for ChimeraSessionCommand {
     }
 }
 
-impl ByteDecodable for ChimeraSessionCommand {
+impl ByteDecodable for EmbeddedSessionCommand {
     fn decode<Size>(bytes: &[u8]) -> BVDecodeResult<Self>
     where
         Size: BVSize + ByteDecodable,
@@ -105,8 +105,8 @@ impl ByteDecodable for ChimeraSessionCommand {
                 actual: 0,
             }),
             _ => match bytes[0] {
-                0x00u8 => Ok(ChimeraSessionCommand::Terminate),
-                0x01u8 => Ok(ChimeraSessionCommand::Restart(SessionExecutable::decode::<
+                0x00u8 => Ok(EmbeddedSessionCommand::Terminate),
+                0x01u8 => Ok(EmbeddedSessionCommand::Restart(SessionExecutable::decode::<
                     Size,
                 >(
                     &bytes[1..]

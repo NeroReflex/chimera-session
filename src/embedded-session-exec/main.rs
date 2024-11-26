@@ -18,7 +18,7 @@ async fn main() -> io::Result<()> {
         let socket_path = format!("{}/login_ng-{}.sock", run_basedir, idx);
         let socket_fs_path = Path::new(socket_path.as_str());
         if !socket_fs_path.exists() {
-            let mut session = chimera_session::session::Session::new(socket_fs_path)?;
+            let mut session = embedded_session::session::Session::new(socket_fs_path)?;
 
             return session.run().await;
         }

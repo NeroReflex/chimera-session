@@ -7,16 +7,16 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug unit tests in library 'chimera_session'",
+            "name": "Debug unit tests in library 'embedded_session'",
             "cargo": {
                 "args": [
                     "test",
                     "--no-run",
                     "--lib",
-                    "--package=chimera-session"
+                    "--package=embedded-session"
                 ],
                 "filter": {
-                    "name": "chimera_session",
+                    "name": "embedded_session",
                     "kind": "lib"
                 }
             },
@@ -26,15 +26,15 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug executable 'chimera-session'",
+            "name": "Debug executable 'embedded-session'",
             "cargo": {
                 "args": [
                     "build",
-                    "--bin=chimera-session",
-                    "--package=chimera-session"
+                    "--bin=embedded-session",
+                    "--package=embedded-session"
                 ],
                 "filter": {
-                    "name": "chimera-session",
+                    "name": "embedded-session",
                     "kind": "bin"
                 }
             },
@@ -44,16 +44,16 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug unit tests in executable 'chimera-session'",
+            "name": "Debug unit tests in executable 'embedded-session'",
             "cargo": {
                 "args": [
                     "test",
                     "--no-run",
-                    "--bin=chimera-session",
-                    "--package=chimera-session"
+                    "--bin=embedded-session",
+                    "--package=embedded-session"
                 ],
                 "filter": {
-                    "name": "chimera-session",
+                    "name": "embedded-session",
                     "kind": "bin"
                 }
             },
@@ -63,15 +63,15 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug executable 'chimera-session-exec'",
+            "name": "Debug executable 'embedded-session-exec'",
             "cargo": {
                 "args": [
                     "build",
-                    "--bin=chimera-session-exec",
-                    "--package=chimera-session"
+                    "--bin=embedded-session-exec",
+                    "--package=embedded-session"
                 ],
                 "filter": {
-                    "name": "chimera-session-exec",
+                    "name": "embedded-session-exec",
                     "kind": "bin"
                 }
             },
@@ -81,16 +81,16 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug unit tests in executable 'chimera-session-exec'",
+            "name": "Debug unit tests in executable 'embedded-session-exec'",
             "cargo": {
                 "args": [
                     "test",
                     "--no-run",
-                    "--bin=chimera-session-exec",
-                    "--package=chimera-session"
+                    "--bin=embedded-session-exec",
+                    "--package=embedded-session"
                 ],
                 "filter": {
-                    "name": "chimera-session-exec",
+                    "name": "embedded-session-exec",
                     "kind": "bin"
                 }
             },

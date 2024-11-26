@@ -4,8 +4,8 @@ use std::{
     io::{self, Error},
 };
 
-use chimera_session::{
-    command::{ChimeraSessionCommand, SessionExecutable},
+use embedded_session::{
+    command::{EmbeddedSessionCommand, SessionExecutable},
     stream_command::StreamCommand,
 };
 use tokio::{io::AsyncWriteExt, net::UnixSocket};
@@ -51,20 +51,20 @@ async fn main() -> io::Result<()> {
 
     let sock_path = match args.socket_addr {
         Some(path) => path,
-        None => match env::var_os(OsString::from(chimera_session::SOCK_ENV_VAR_NAME)) {
+        None => match env::var_os(OsString::from(embedded_session::SOCK_ENV_VAR_NAME)) {
             Some(sock_addr) => sock_addr.as_os_str().to_os_string(),
-            None => return Err(Error::new(io::ErrorKind::NotFound, format!("Could not find environment variable {}, are you running this tool from a session started with chimera-session-exec?", chimera_session::SOCK_ENV_VAR_NAME)))
+            None => return Err(Error::new(io::ErrorKind::NotFound, format!("Could not find environment variable {}, are you running this tool from a session started with embedded-session-exec?", embedded_session::SOCK_ENV_VAR_NAME)))
         },
     };
 
     let socket = UnixSocket::new_stream()?;
     let mut stream = socket.connect(sock_path).await?;
 
-    let encoder = StreamCommand::new(chimera_session::COMMAND_LIMIT_BYTES);
+    let encoder = StreamCommand::new(embedded_session::COMMAND_LIMIT_BYTES);
 
     let encoded_cmd = match args.command {
         Command::Terminate(_terminate_command) => encoder
-            .encode(ChimeraSessionCommand::Terminate)
+            .encode(EmbeddedSessionCommand::Terminate)
             .map_err(|err| {
                 std::io::Error::new(
                     io::ErrorKind::Other,
@@ -72,7 +72,7 @@ async fn main() -> io::Result<()> {
                 )
             }),
         Command::Restart(restart_command) => encoder
-            .encode(ChimeraSessionCommand::Restart(SessionExecutable::new(
+            .encode(EmbeddedSessionCommand::Restart(SessionExecutable::new(
                 restart_command.name.as_str(),
             )))
             .map_err(|err| {
